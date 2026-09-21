@@ -48,6 +48,7 @@ src/
 - The number line has larger tick numbers and a marker with a white ring so it stands out from the line.
 - **Narrow screens:** below 600px, odd-numbered labels drop to a second row (joined to the axis by a longer tick) so every number stays legible. The layout was checked in Chrome at 320, 360, 768 and 1024px, with no horizontal scrolling.
 - The score screen shows the score large, with an inviting Play Again button.
+- A "Problem X of N" indicator above the prompt shows progress; it isn't shown on the score screen.
 
 ## Accessibility
 
@@ -77,12 +78,11 @@ Known limitations:
 Built to a 3-hour limit. Not done, in the order I would do them:
 
 1. Announce hitting the edge of the line
-2. Progress indicator (problem N of total)
-3. Random problem generation
-4. Difficulty levels
-5. Move-count / efficiency scoring
-6. Visual jump arcs
-7. Automated accessibility and contrast testing
+2. Random problem generation
+3. Difficulty levels
+4. Move-count / efficiency scoring
+5. Visual jump arcs
+6. Automated accessibility and contrast testing
 
 ## Note on process
 
