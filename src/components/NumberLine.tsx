@@ -19,7 +19,7 @@ export function NumberLine({ position, target }: NumberLineProps) {
         <div
           key={n}
           aria-hidden="true"
-          className="number-line__tick"
+          className={`number-line__tick${n % 2 === 1 ? ' number-line__tick--odd' : ''}`}
           style={{ left: `${toPercent(n)}%` }}
         >
           <span className="number-line__mark" />

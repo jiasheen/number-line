@@ -1,17 +1,224 @@
+:root {
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+  --accent-active: #7c2d12;
+  --accent-tint: #fff4e6;
+  --accent-tint-strong: #ffe6cc;
+  --ink: #2d2a3e;
+  --bg: #fff8ef;
+  --card: #fff;
+  --correct-fg: #166534;
+  --correct-bg: #dcfce7;
+  --wrong-fg: #9f1239;
+  --wrong-bg: #ffe4e6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  color: #222;
-  background: #fff;
+  padding: 0.5rem;
+  min-height: 100vh;
+  font-family: ui-rounded, 'SF Pro Rounded', Nunito, 'Varela Round', system-ui, sans-serif;
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--bg);
 }
 
 .app {
-  max-width: 48rem;
-  margin: 4rem auto;
-  padding: 0 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 44rem;
+  margin: 1rem auto;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background: var(--card);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 16px rgba(45, 42, 62, 0.1);
+}
+
+.prompt {
+  margin: 0;
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.prompt__num {
+  color: var(--accent);
+}
+
+.score {
+  margin: 0;
+  padding: 0.25rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--accent-active);
+  background: var(--accent-tint);
+  border-radius: 999px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  min-width: 5rem;
+  min-height: 3.5rem;
+  padding: 0.5rem 1.5rem;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 3px solid var(--accent);
+  border-radius: 1rem;
+}
+
+.btn--step {
+  color: var(--accent);
+  background: var(--card);
+}
+
+.btn--primary {
+  min-width: 10rem;
+  color: #fff;
+  background: var(--accent);
+}
+
+.btn:not(:disabled):active {
+  transform: translateY(2px);
+}
+
+.btn--step:not(:disabled):active {
+  background: var(--accent-tint-strong);
+}
+
+.btn--primary:not(:disabled):active {
+  background: var(--accent-active);
+  border-color: var(--accent-active);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  color: #6f6a65;
+  background: #f1ece6;
+  border-color: #d8d2ca;
+}
+
+/* Hover only on devices that really hover, so taps don't leave it stuck. */
+@media (hover: hover) {
+  .btn--step:not(:disabled):hover {
+    background: var(--accent-tint);
+    border-color: var(--accent-hover);
+    color: var(--accent-hover);
+  }
+
+  .btn--primary:not(:disabled):hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 1rem;
+}
+
+.feedback--correct {
+  color: var(--correct-fg);
+  background: var(--correct-bg);
+  border: 2px solid var(--correct-fg);
+}
+
+.feedback--incorrect {
+  color: var(--wrong-fg);
+  background: var(--wrong-bg);
+  border: 2px solid var(--wrong-fg);
+}
+
+/* Icon comes from CSS; the "/ ''" gives it an empty text alternative so it
+   isn't read out (first declaration is the fallback for older browsers). */
+.feedback--correct::before {
+  content: '✓';
+  content: '✓' / '';
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.feedback--incorrect::before {
+  content: '✗';
+  content: '✗' / '';
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+.score-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 0;
+}
+
+.score-screen__emoji {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.score-screen__text {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+}
+
+.score-screen__num {
+  display: block;
+  font-size: clamp(3rem, 12vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+@media (min-width: 601px) {
+  body {
+    padding: 1rem;
+  }
+
+  .app {
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 2.5rem 2rem;
+  }
 }
 
 button:focus-visible {
   outline: 2px solid #1a73e8;
   outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
