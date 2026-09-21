@@ -84,6 +84,9 @@ function App() {
 
   return (
     <main className="app">
+      <p className="progress">
+        Problem {problemIndex + 1} of {problems.length}
+      </p>
       <p className="prompt">
         Start on <span className="prompt__num">{problem.start}</span> — move to{' '}
         <span className="prompt__num">{problem.target}</span>

@@ -5,6 +5,7 @@
   --accent-tint: #fff4e6;
   --accent-tint-strong: #ffe6cc;
   --ink: #2d2a3e;
+  --muted: #5b5670;
   --bg: #fff8ef;
   --card: #fff;
   --correct-fg: #166534;
@@ -40,6 +41,13 @@ body {
   background: var(--card);
   border-radius: 1.5rem;
   box-shadow: 0 4px 16px rgba(45, 42, 62, 0.1);
+}
+
+.progress {
+  margin: 0 0 -0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--muted);
 }
 
 .prompt {
